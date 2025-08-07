@@ -7,21 +7,26 @@ import {
 
 import logo from '../logo.svg';
 
+import { LazyPage01, LazyPage02, LazyPage03 } from "../01-lazyload/pages";
+
 export const Navigation = () => {
   return (
     <Router>
       <div className="main-layout">
         <nav>
-            <img src={ logo } alt="React Logo" />
+          <NavLink to="/" activeClassName="nav-active" exact>
+            <img src={logo} alt="React Logo" />
+          </NavLink>
+
           <ul>
             <li>
-              <NavLink to="/" activeClassName="nav-active" exact>Home</NavLink>
+              <NavLink to="/lazy/01" activeClassName="nav-active" exact>Lazy 01</NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeClassName="nav-active" exact>About</NavLink>
+              <NavLink to="/lazy/02" activeClassName="nav-active" exact>Lazy 02</NavLink>
             </li>
             <li>
-              <NavLink to="/users" activeClassName="nav-active" exact>Users</NavLink>
+              <NavLink to="/lazy/03" activeClassName="nav-active" exact>Lazy 03</NavLink>
             </li>
           </ul>
         </nav>
@@ -29,11 +34,14 @@ export const Navigation = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <h1>About</h1>
+          <Route path="/lazy/01">
+            <LazyPage01 />
           </Route>
-          <Route path="/users">
-            <h1>Users</h1>
+          <Route path="/lazy/02">
+            <LazyPage02 />
+          </Route>
+          <Route path="/lazy/03">
+            <LazyPage03 />
           </Route>
           <Route path="/">
             <h1>Home</h1>
